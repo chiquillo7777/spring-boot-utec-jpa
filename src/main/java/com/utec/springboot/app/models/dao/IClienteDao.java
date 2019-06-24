@@ -1,5 +1,11 @@
 package com.utec.springboot.app.models.dao;
 
-public interface IClienteDao {
+import java.util.List;
 
+import com.utec.springboot.app.models.entity.Cliente;
+
+public interface IClienteDao {
+	public List<Cliente> findAll();
+	
+	public void save(Cliente cliente);
 }
