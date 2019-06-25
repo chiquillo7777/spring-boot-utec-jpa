@@ -27,44 +27,37 @@
 			</ul>
 		</div>
 	</nav>
-
 	<div class="container">
 		<h1
 			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
 			th:text="${titulo}"></h1>
 
-		<a th:href="@{/form}">Crear Cliente</a>
-		<table class="table table-stripped">
-			<thead>
-				<tr>
-					<th>id</th>
-					<th>nombre</th>
-					<th>apellido</th>
-					<th>email</th>
-					<th>fecha</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="cliente: ${clientes}">
-					<td th:text="${cliente.id}"></td>
-					<td th:text="${cliente.nombre}"></td>
-					<td th:text="${cliente.apellido}"></td>
-					<td th:text="${cliente.email}"></td>
-					<td th:text="${cliente.createAt}"></td>
-				</tr>
-			</tbody>
-		</table>
+		<form th:action="@{/form}" th:object="${cliente}" method="post">
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Nombre</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{nombre}" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Apellido</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{apellido}" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Email</label>
+				<div class="col-sm-6">
+					<input type="email" th:field="*{email}" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-6">
+					<input type="submit" value="Crear Cliente" class="btn btn-primary" />
+				</div>
+			</div>
+			<input type="hidden" th:field="*{id}" />
+		</form>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-		crossorigin="anonymous"></script>
 </body>
 </html>
